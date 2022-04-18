@@ -19,6 +19,7 @@ from django.urls import path, include
 from itineraires import views
 
 urlpatterns = [
+    path('',views.itineraires, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('itineraires/', views.itineraires, name='itineraires'),
