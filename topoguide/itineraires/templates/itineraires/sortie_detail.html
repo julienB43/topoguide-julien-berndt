@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Sortie de {{sortie.user}} à {{sortie.itineraire.title}}{% endblock title%}
+
+{%block back%}
+<li class="text">
+    <a class="nav-link" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+</li>
+{% endblock back%}
+
+{%block content%}
+    <div class='container pt-5'>
+        <h1>{{sortie.itineraire.title}} - Sortie de {{sortie.user}}</h1>
+        <p>Date de sortie : {{sortie.date_sortie}}</p>
+        <p>Durée réelle : {{sortie.real_duration}} h</p>
+        <p>Nombre de participants : {{sortie.nb_people}}</p>
+        <p>Type de randonneurs : {{sortie.exp_grp}}</p>
+        <p>Météo : {{sortie.weather}}</p>
+        <p>Difficulté ressentie : {{sortie.difficulty_felt}} / 5</p>
+    </div>
+{% endblock content%}
