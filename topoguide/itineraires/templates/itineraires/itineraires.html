@@ -3,4 +3,33 @@
 {% block title %}Liste des itineraires{% endblock title%}
 
 {%block content%}
+
+<div class="row pb-3">
+    <h1>Itineraires</h1>
+</div>
+
+<div class="row">
+    {% if itineraires %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Durée estimée</th>
+                <th>Difficulté estimée</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for itineraire in itineraires %}
+                <tr>
+                    <td>{{ itineraire.title }}</td>
+                    <td>{{ itineraire.duration }}</td>
+                    <td>{{ itineraire.difficulty }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="jumbotron"><i>Pas d'itineraires disponible</i></div>
+    {% endif %}
+    </div>
 {%endblock content%}
