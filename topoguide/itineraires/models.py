@@ -19,13 +19,12 @@ class Itineraire(models.Model):
     
 class Sortie(models.Model):
     
-    User = models.ForeignKey('User', on_delete=models.CASCADE)
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
     itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE)
     
     date_sortie = models.DateTimeField('Date de la sortie')
     real_duration = models.IntegerField('Durée réelle (h)')
     nb_people = models.IntegerField('Nombre de participants')
-    exp_grp = models.CharField(choices=['tous débutants', 'tous expérimentés', 'mixte'])
-    weather = models.CharField(choices=['bonne', 'moyenne', 'mauvaise'])
+    exp_grp = models.CharField(choices=[('tous_débutants', 'tous débutants'), ('tous_expérimentés','tous expérimentés'), ('mixte', 'mixte')], max_length=20)
+    weather = models.CharField(choices=[('bonne', 'bonne'), ('moyenne', 'moyenne'), ('mauvaise', 'mauvaise')], max_length=10)
     difficulty_felt = models.IntegerField('Difficulté (1-5)')
-
