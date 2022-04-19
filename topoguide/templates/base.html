@@ -12,15 +12,27 @@
 </head>
 
 <body>
-    <div class="container">
+    
+    <nav class="navbar pb-2 navbar-expand-sm bg-light navbar-light fixed-top">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li>
+                    <h4>TOPOGUIDE</h4>
+                </li>
+                {%block back%}{%endblock back%}
+            </ul>
+            <a class="btn btn-outline-success" href="http://127.0.0.1:8000/accounts/login/">Se connecter</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
 
         {% block content %}{% endblock %}
 
-        <div class="row pt-5">
-            <footer>
-                <em>&copy; ISAE-SUPAERO</em>
-            </footer>
+        <div class="p-2 bg-dark text-center text-white fixed-bottom">
+            <em>&copy; ISAE-SUPAERO 2022/Julien Berndt</em>
         </div>
+
     </div>
 </body>
 </html>
