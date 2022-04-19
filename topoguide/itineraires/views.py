@@ -1,9 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_list_or_404
 
 from .models import Itineraire
 
-def itineraires(request):
-    
-    itineraire = get_object_or_404(Itineraire)
-    
-    return render(request, 'itineraires/itineraires.html', {'itineraire': itineraire})
+def itineraire(request):
+    itineraires = get_list_or_404(Itineraire)
+    return render(request, 'itineraires/itineraires.html', {'itineraires': itineraires})
