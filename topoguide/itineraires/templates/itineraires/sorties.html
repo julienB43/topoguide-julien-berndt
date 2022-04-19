@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des itineraires{% endblock title%}
+
+{%block content%}
+
+<div class="row pb-3">
+    <h1>Itineraires</h1>
+</div>
+
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Par</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for sortie in itineraire.sortie_set.all %}
+                <tr>
+                    <td>{{ sortie.user }}</td>
+                    <td>{{ sortie.date_sortie }}</td>
+                    <td><div class="clearfix">
+                            <div class="float-right pb-3">
+                                <button type="submit" class="btn btn-primary">Consulter</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%endblock content%}
