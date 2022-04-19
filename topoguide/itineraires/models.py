@@ -19,7 +19,7 @@ class Itineraire(models.Model):
     
 class Sortie(models.Model):
     
-    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE)
     
     date_sortie = models.DateTimeField('Date de la sortie')
