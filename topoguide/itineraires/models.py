@@ -20,7 +20,7 @@ class Itineraire(models.Model):
 class Sortie(models.Model):
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE)
+    itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE, related_name='sorties')
     
     date_sortie = models.DateTimeField('Date de la sortie')
     real_duration = models.IntegerField('Durée réelle (h)')

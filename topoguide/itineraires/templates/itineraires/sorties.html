@@ -17,7 +17,7 @@
             </tr>
         </thead>
             <tbody>
-            {% for sortie in itineraire.sortie_set.all %}
+            {% for sortie in sorties %}
                 <tr>
                     <td>{{ sortie.user }}</td>
                     <td>{{ sortie.date_sortie }}</td>

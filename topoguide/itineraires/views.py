@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 
 from .models import Itineraire, Sortie
 
@@ -8,4 +8,4 @@ def itineraire(request):
 
 def sorties(request, itineraire_id):
     sorties = get_list_or_404(Sortie, pk=itineraire_id)
-    return render(request, 'itineraires/sorties.html', {'itineraires': sorties})
+    return render(request, 'itineraires/sorties.html', {'sorties': sorties})
