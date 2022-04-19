@@ -12,7 +12,7 @@ class Itineraire(models.Model):
     deniv_pos_cumul = models.IntegerField('Dénivelé positif cumulé (m)')
     deniv_neg_cumul = models.IntegerField('Dénivelé négatif cumulé (m)')
     duration = models.IntegerField('Durée (h)')
-    difficulty = models.IntegerField('Difficulté (1-5)')
+    difficulty = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     
     def __self__(self):
         return self.nom
