@@ -9,3 +9,7 @@ def itineraire(request):
 def sorties(request, itineraire_id):
     sorties = get_list_or_404(Sortie, pk=itineraire_id)
     return render(request, 'itineraires/sorties.html', {'sorties': sorties})
+
+def sortie(request, user_id):
+    sortie = get_object_or_404(Sortie, pk=user_id)
+    return render(request, 'itineraires/sortie_detail.html', {'sortie': sortie})
