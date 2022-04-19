@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{%extends 'base.html'%}
 
-{% block title %}Liste des itineraires{% endblock title%}
+{%block title%}Liste des sorties{%endblock title%}
 
 {%block back%}
 <li class="text">
@@ -10,8 +10,8 @@
 
 {%block content%}
 
-<div class="row pb-3">
-    <h1>Itineraires</h1>
+<div class="container pt-5">
+    <h1>Sorties</h1>
 </div>
 
 <div class="row">
@@ -23,16 +23,16 @@
             </tr>
         </thead>
             <tbody>
-            {% for sortie in sorties %}
+            {%for sortie in sorties%}
                 <tr>
-                    <td>{{ sortie.user }}</td>
-                    <td>{{ sortie.date_sortie }}</td>
-                    <td><button type="submit" class="btn btn-outline-primary">Consulter</button>
-                        <button type="submit" class="btn btn-outline-secondary">Modifier</button>
-                        <button type="submit" class="btn btn-outline-danger">Supprimer</button>
+                    <td>{{sortie.user}}</td>
+                    <td>{{sortie.date_sortie}}</td>
+                    <td><a href="http://127.0.0.1:8000/itineraires/sortie/1" class="btn btn-outline-primary">Consulter</a>
+                        <a href="" class="btn btn-outline-secondary">Modifier</a>
+                        <a href="" class="btn btn-outline-danger">Supprimer</a>
                     </td>
                 </tr>
-            {% endfor %}
+            {%endfor%}
             </tbody>
         </table>
     </div>

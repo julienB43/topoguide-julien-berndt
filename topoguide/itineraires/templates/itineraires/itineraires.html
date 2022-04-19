@@ -4,13 +4,13 @@
 
 {%block content%}
 
-<div class="row pb-3">
+<div class="container pt-5">
     <h1>Itineraires</h1>
 </div>
 
 <div class="row">
     {% if itineraires %}
-        <table class="table table-striped">
+        <table class="table table">
             <thead>
             <tr>
                 <th>Nom</th>
@@ -22,8 +22,8 @@
             {% for itineraire in itineraires %}
                 <tr>
                     <td><a href="{% url 'itineraires:sortie' itineraire.id %}">{{ itineraire.title }}</a></td>
-                    <td>{{ itineraire.duration }}</td>
-                    <td>{{ itineraire.difficulty }}</td>
+                    <td>{{ itineraire.duration }}h</td>
+                    <td>{{ itineraire.difficulty }} / 5</td>
                 </tr>
             {% endfor %}
             </tbody>
