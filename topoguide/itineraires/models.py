@@ -27,4 +27,4 @@ class Sortie(models.Model):
     nb_people = models.IntegerField('Nombre de participants')
     exp_grp = models.CharField(choices=[('tous_débutants', 'tous débutants'), ('tous_expérimentés','tous expérimentés'), ('mixte', 'mixte')], max_length=20)
     weather = models.CharField(choices=[('bonne', 'bonne'), ('moyenne', 'moyenne'), ('mauvaise', 'mauvaise')], max_length=10)
-    difficulty_felt = models.IntegerField('Difficulté (1-5)')
+    difficulty_felt = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
