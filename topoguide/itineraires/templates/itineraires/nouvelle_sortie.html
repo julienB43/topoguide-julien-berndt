@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}Nouvelle sortie pour {{itineraire.title}}{% endblock title%}
+
+{%block content%}
+    <div class="container py-5">
+        <form action="{% url 'itineraires:nouvelle_sortie' %}" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+                {% buttons %}
+                <button type="submit" class="btn btn-outline-success">Enregister</button>
+                <a href="" class="btn btn-outline-danger">Annuler</a>
+                {% endbuttons %}
+        </form>
+    </div>
+{%endblock%}
