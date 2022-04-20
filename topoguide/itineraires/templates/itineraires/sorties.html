@@ -27,8 +27,8 @@
                 <tr>
                     <td>{{sortie.user}}</td>
                     <td>{{sortie.date_sortie}}</td>
-                    <td><a href="http://127.0.0.1:8000/itineraires/sortie/1" class="btn btn-outline-primary">Consulter</a>
-                        <a href="" class="btn btn-outline-secondary">Modifier</a>
+                    <td><a href="{%url 'itineraires:sortie' sortie.id%}" class="btn btn-outline-primary">Consulter</a>
+                        <a href="" class="btn btn-outline-success">Modifier</a>
                         <a href="" class="btn btn-outline-danger">Supprimer</a>
                     </td>
                 </tr>
@@ -36,4 +36,5 @@
             </tbody>
         </table>
     </div>
+    <a href="" class="btn btn-outline-success">Nouvelle sortie</a>
 {%endblock content%}
