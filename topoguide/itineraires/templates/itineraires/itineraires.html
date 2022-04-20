@@ -21,9 +21,10 @@
             <tbody>
             {% for itineraire in itineraires %}
                 <tr>
-                    <td><a href="{% url 'itineraires:sortie' itineraire.id %}">{{ itineraire.title }}</a></td>
+                    <td>{{ itineraire.title }}</td>
                     <td>{{ itineraire.duration }}h</td>
                     <td>{{ itineraire.difficulty }} / 5</td>
+                    <td><a href="{% url 'itineraires:sorties' itineraire.id %}" class="btn btn-outline-primary">Détail</a></td>
                 </tr>
             {% endfor %}
             </tbody>
