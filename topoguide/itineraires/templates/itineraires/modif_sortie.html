@@ -10,7 +10,7 @@
         {% bootstrap_form form %}
         {% buttons %}
           <button type="submit" class="btn btn-outline-success">Modifier</button>
-          <a href="{%url 'itineraires:itineraire' %}" class="btn btn-outline-danger">Annuler</a>
+          <a href="{%url 'itineraires:sorties' sortie.itineraire_id %}" class="btn btn-outline-danger">Annuler</a>
         {% endbuttons %}
     </form>
   </div>

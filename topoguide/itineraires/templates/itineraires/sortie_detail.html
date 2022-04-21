@@ -4,7 +4,12 @@
 
 {%block back%}
 <li class="text">
-    <a class="nav-link" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+    <li class="navbar-item">
+        <a class="nav-link align-middle" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+    </li>
+    <li class="navbar-item">
+        <a class="nav-link align-middle" href="{%url 'itineraires:sorties' sortie.itineraire_id%}">Sortie à {{sortie.itineraire.title}}</a>
+    </li>
 </li>
 {% endblock back%}
 

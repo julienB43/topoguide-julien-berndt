@@ -43,4 +43,4 @@ def modif_sortie(request, user_id):
         if form.is_valid():
             form.save()
             return redirect('itineraires:sorties', itineraire_id=sortie.itineraire.id)
-    return render(request, 'itineraires/modif_sortie.html', {'form': form})
+    return render(request, 'itineraires/modif_sortie.html', {'form': form, 'sortie': sortie})

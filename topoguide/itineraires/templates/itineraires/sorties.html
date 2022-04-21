@@ -5,13 +5,16 @@
 
 {%block back%}
 <li class="text">
-    <a class="nav-link" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+    <a class="nav-link align-middle" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
 </li>
 {% endblock back%}
 
 {%block content%}
 <div class="container pt-5">
     <div class="row">
+
+        <h1>{{itineraire_detail.title}}</h1>
+        <div class="text mb-3"><b>Randonnée depuis {{itineraire_detail.start}}</b></div>
         <div class="col-sm-4">
         <table class="table">
                 <tr>
@@ -47,6 +50,8 @@
 </div>
 </div>
 
+<hr>
+
 {%if sorties%}
 
 <h1>Sorties</h1>
@@ -66,7 +71,6 @@
                     <td>{{sortie.date_sortie}}</td>
                     <td><a href="{%url 'itineraires:sortie' sortie.id%}" class="btn btn-outline-primary">Consulter</a>
                         <a href="{%url 'itineraires:modif_sortie' sortie.id%}" class="btn btn-outline-success">Modifier</a>
-                        <a href="" class="btn btn-outline-danger">Supprimer</a>
                     </td>
                 </tr>
             {%endfor%}
