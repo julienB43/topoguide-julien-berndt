@@ -126,4 +126,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Redirection after login and logout
 
-LOGIN_REDIRECT_URL = '/itineraires/itineraire'
+LOGIN_REDIRECT_URL = '/itineraires'
