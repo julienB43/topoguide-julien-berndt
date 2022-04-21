@@ -25,7 +25,7 @@
             </tr>
         </thead>
             <tbody>
-            {%for sortie in itineraires.sorties_set.all%}
+            {%for sortie in sorties%}
                 <tr>
                     <td>{{sortie.user}}</td>
                     <td>{{sortie.date_sortie}}</td>
@@ -39,7 +39,7 @@
         </table>
     </div>
 {%else%}
-    <div class="jumbotron"><i>Pas d'itineraires disponible</i></div>
+    <div class="jumbotron"><i>Pas de sorties disponibles</i></div>
 {%endif%}
-    <a href="{%url 'itineraires:nouvelle_sortie'%}" class="btn btn-outline-success">Nouvelle sortie</a>
+    <a href="{%url 'itineraires:nouvelle_sortie'%}" class="btn mb-5 btn-outline-success">Nouvelle sortie</a>
 {%endblock content%}
