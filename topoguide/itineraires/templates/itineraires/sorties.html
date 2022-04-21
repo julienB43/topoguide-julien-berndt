@@ -15,8 +15,8 @@
     <h1>Sorties</h1>
 </div>
 
+{%if sorties%}
 <div class="row">
-    {%if sorties%}
     <table class="table">
         <thead>
             <tr>
@@ -38,5 +38,8 @@
             </tbody>
         </table>
     </div>
+{%else%}
+    <div class="jumbotron"><i>Pas d'itineraires disponible</i></div>
+{%endif%}
     <a href="{%url 'itineraires:nouvelle_sortie'%}" class="btn btn-outline-success">Nouvelle sortie</a>
 {%endblock content%}
