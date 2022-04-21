@@ -3,6 +3,17 @@
 
 {% block title %}Modification de la sortie{% endblock title%}
 
+{%block back%}
+<li class="text">
+    <li class="navbar-item">
+        <a class="nav-link align-middle" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+    </li>
+    <li class="navbar-item">
+        <a class="nav-link align-middle" href="{%url 'itineraires:sorties' sortie.itineraire_id%}">Sortie à {{sortie.itineraire.title}}</a>
+    </li>
+</li>
+{% endblock back%}
+
 {% block content %}
   <div class="container py-5">
     <form action="{% url 'itineraires:modif_sortie' form.instance.id %}" method="post" class="form">

@@ -3,6 +3,14 @@
 
 {% block title %}Nouvelle sortie{% endblock title%}
 
+{%block back%}
+<li class="text">
+    <li class="navbar-item">
+        <a class="nav-link align-middle" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+    </li>
+</li>
+{% endblock back%}
+
 {%block content%}
     <div class="container py-5">
         <form action="{% url 'itineraires:nouvelle_sortie' %}" method="post" class="form">
