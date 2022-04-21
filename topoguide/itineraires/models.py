@@ -24,8 +24,8 @@ class Sortie(models.Model):
     date_sortie = models.DateTimeField('Date de la sortie')
     real_duration = models.IntegerField('Durée réelle (h)')
     nb_people = models.IntegerField('Nombre de participants')
-    exp_grp = models.CharField('Type de randonneur', choices=[('tous_débutants', 'tous débutants'), ('tous_expérimentés','tous expérimentés'), ('mixte', 'mixte')], max_length=20)
-    weather = models.CharField('Météo', choices=[('bonne', 'bonne'), ('moyenne', 'moyenne'), ('mauvaise', 'mauvaise')], max_length=10)
+    exp_grp = models.CharField('Type de randonneur', choices=[('tous_débutants', 'Tous débutants'), ('tous_expérimentés','Tous expérimentés'), ('mixte', 'Mixte')], max_length=20)
+    weather = models.CharField('Météo', choices=[('bonne', 'Bonne'), ('moyenne', 'Moyenne'), ('mauvaise', 'Mauvaise')], max_length=10)
     difficulty_felt = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     
     def __str__(self):
