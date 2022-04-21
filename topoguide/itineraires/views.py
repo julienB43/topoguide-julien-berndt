@@ -16,7 +16,6 @@ def sortie(request, user_id):
     sortie = get_object_or_404(Sortie, pk=user_id)
     return render(request, 'itineraires/sortie_detail.html', {'sortie': sortie})
 
-@login_required
 def nouvelle_sortie(request):  
     if request.method == 'GET':
         form = SortieForm()
@@ -27,7 +26,6 @@ def nouvelle_sortie(request):
             return redirect('itineraires')
     return render(request,'itineraires/nouvelle_sortie.html', {'form': form})
 
-@login_required
 def modif_sortie(request, user_id):
     sortie = Sortie.objects.get(pk=user_id)
     if request.method == 'GET':
