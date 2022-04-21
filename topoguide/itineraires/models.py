@@ -13,20 +13,20 @@ class Itineraire(models.Model):
     duration = models.IntegerField('Durée (h)')
     difficulty = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     
-    def __self__(self):
+    def __str__(self):
         return self.title
     
 class Sortie(models.Model):
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE)
+    itineraire = models.ForeignKey(Itineraire, on_delete=models.CASCADE)
     
     date_sortie = models.DateTimeField('Date de la sortie')
     real_duration = models.IntegerField('Durée réelle (h)')
     nb_people = models.IntegerField('Nombre de participants')
-    exp_grp = models.CharField(choices=[('tous_débutants', 'tous débutants'), ('tous_expérimentés','tous expérimentés'), ('mixte', 'mixte')], max_length=20)
-    weather = models.CharField(choices=[('bonne', 'bonne'), ('moyenne', 'moyenne'), ('mauvaise', 'mauvaise')], max_length=10)
+    exp_grp = models.CharField('Type de randonneur', choices=[('tous_débutants', 'tous débutants'), ('tous_expérimentés','tous expérimentés'), ('mixte', 'mixte')], max_length=20)
+    weather = models.CharField('Météo', choices=[('bonne', 'bonne'), ('moyenne', 'moyenne'), ('mauvaise', 'mauvaise')], max_length=10)
     difficulty_felt = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     
-    def __self__(self):
-        return self.user
+    def __str__(self):
+        return 'Sortie à ' + self.itineraire.title + ' de ' + self.user.username
