@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}Modification de la sortie{% endblock title%}
+
+{% block content %}
+  <div class="container py-5">
+    <form action="{% url 'itineraires:modif_sortie' id %}" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+          <button type="submit" class="btn btn-outline-success">Update</button>
+          <a href="{% url 'itineraires:sorties' %}" class="btn btn-outline-danger">Annuler</a>
+        {% endbuttons %}
+    </form>
+  </div>
+{% endblock content %}

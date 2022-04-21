@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Itineraire(models.Model):
-    
     title = models.CharField('Nom', max_length=200)
     start = models.CharField('Point de départ', max_length=200)
     description = models.CharField('Description', max_length=1000)
@@ -15,12 +14,12 @@ class Itineraire(models.Model):
     difficulty = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     
     def __self__(self):
-        return self.nom
+        return self.title
     
 class Sortie(models.Model):
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE, related_name='sorties')
+    itineraire = models.ForeignKey('Itineraire', on_delete=models.CASCADE)
     
     date_sortie = models.DateTimeField('Date de la sortie')
     real_duration = models.IntegerField('Durée réelle (h)')
@@ -28,3 +27,6 @@ class Sortie(models.Model):
     exp_grp = models.CharField(choices=[('tous_débutants', 'tous débutants'), ('tous_expérimentés','tous expérimentés'), ('mixte', 'mixte')], max_length=20)
     weather = models.CharField(choices=[('bonne', 'bonne'), ('moyenne', 'moyenne'), ('mauvaise', 'mauvaise')], max_length=10)
     difficulty_felt = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
+    
+    def __self__(self):
+        return self.user
