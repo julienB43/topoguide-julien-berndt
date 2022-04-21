@@ -10,12 +10,47 @@
 {% endblock back%}
 
 {%block content%}
-
 <div class="container pt-5">
-    <h1>Sorties</h1>
+    <div class="row">
+        <div class="col-sm-4">
+        <table class="table">
+                <tr>
+                    <th>Altitude de départ</th>
+                    <td>{{itineraire_detail.start_alt}} mètre{{ itineraire_detail.start_alt|pluralize }}</td>
+                </tr>
+                <tr>
+                    <th>Altitude minimale</th>
+                    <td>{{itineraire_detail.alt_min}} mètre{{ itineraire_detail.alt_min|pluralize }}</td>
+                </tr>
+                <tr>
+                    <th>Altitude maximale</th>
+                    <td>{{itineraire_detail.alt_max}} mètre{{ itineraire_detail.alt_max|pluralize }}</td>
+                </tr>
+                <tr>
+                    <th>Dénivelé positif cumulé</th>
+                    <td>{{itineraire_detail.deniv_pos_cumul}} mètre{{ itineraire_detail.deniv_pos_cumul|pluralize }}</td>
+                </tr>
+                <tr>
+                    <th>Dénivelé négatif cumulé</th>
+                    <td>{{itineraire_detail.deniv_neg_cumul}} mètre{{ itineraire_detail.deniv_neg_cumul|pluralize }}</td>
+                </tr>
+                <tr>
+                    <th>Durée estimée</th>
+                    <td>{{itineraire_detail.duration}} heure{{ itineraire_detail.duration|pluralize }}</td>
+                </tr>
+                <tr>
+                    <th>Difficutlé estimée</th>
+                    <td>{{itineraire_detail.difficulty}} / 5</td>
+                </tr>
+        </table>
+    </div>
+</div>
 </div>
 
 {%if sorties%}
+
+<h1>Sorties</h1>
+
 <div class="row">
     <table class="table">
         <thead>
@@ -39,6 +74,9 @@
         </table>
     </div>
 {%else%}
+    <div class="container pt-5">
+        <h1>Sorties</h1>
+    </div>
     <div class="jumbotron"><i>Pas de sorties disponibles</i></div>
 {%endif%}
     <a href="{%url 'itineraires:nouvelle_sortie'%}" class="btn mb-5 btn-outline-success">Nouvelle sortie</a>
