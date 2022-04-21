@@ -4,7 +4,7 @@ from django.contrib.auth import logout
 
 
 from .models import Itineraire, Sortie
-from .form import SortieForm
+from .form import SortieForm, SortieModifForm
 
 
 def itineraire(request):
@@ -42,9 +42,9 @@ def nouvelle_sortie(request):
 def modif_sortie(request, user_id):
     sortie = Sortie.objects.get(pk=user_id)
     if request.method == 'GET':
-        form = SortieForm(instance=sortie)
+        form = SortieModifForm(instance=sortie)
     elif request.method == 'POST':
-        form = SortieForm(request.POST, instance=sortie)
+        form = SortieModifForm(request.POST, instance=sortie)
         if form.is_valid():
             form.save()
             return redirect('itineraires:sorties', itineraire_id=sortie.itineraire.id)
