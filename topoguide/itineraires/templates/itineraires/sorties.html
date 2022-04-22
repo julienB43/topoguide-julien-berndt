@@ -88,6 +88,6 @@
     <div class="jumbotron"><i>Pas de sorties disponibles</i></div>
 {%endif%}
 {%if user.is_authenticated%}
-    <a href="{%url 'itineraires:nouvelle_sortie'%}" class="btn mb-5 btn-outline-success">Nouvelle sortie</a>
+    <a href="{%url 'itineraires:nouvelle_sortie' itineraire_detail.id%}" class="btn mb-5 btn-outline-success">Nouvelle sortie</a>
 {%endif%}
 {%endblock content%}

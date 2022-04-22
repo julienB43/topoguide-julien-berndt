@@ -16,12 +16,12 @@
 
 {% block content %}
   <div class="container py-5">
-    <h1>Modifier la sortie à {{sortie.itineraire.title}}</h1>
+    <h1>Modification la sortie de {{sortie.user.username}} à {{sortie.itineraire.title}}</h1>
     <form action="{% url 'itineraires:modif_sortie' form.instance.id %}" method="post" class="form">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
-          <button type="submit" class="btn btn-outline-success">Modifier</button>
+          <button type="submit" class="btn btn-outline-success">Modifier la sortie</button>
           <a href="{%url 'itineraires:sorties' sortie.itineraire_id %}" class="btn btn-outline-danger">Annuler</a>
         {% endbuttons %}
     </form>

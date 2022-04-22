@@ -1,10 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-
 
 from .models import Itineraire, Sortie
-from .form import SortieForm, SortieModifForm
+from .form import SortieForm
 
 
 def itineraire(request):
@@ -52,21 +51,7 @@ def sortie(request, user_id):
     return render(request, 'itineraires/sortie_detail.html', {'sortie': sortie})
 
 @login_required()
-def logout_redirect(request):
-    """
-    Déconnexion et redirection vers la liste des itineraires:
-    
-    Args:
-        request: la requête demandée
-        
-    Returns:
-        la redirection vers la liste des itineraires
-    """
-    logout(request)
-    return redirect('itineraires:itineraire')
-
-@login_required()
-def nouvelle_sortie(request):
+def nouvelle_sortie(request, itineraire_id):
     """
     Création d'une nouvelle sortie basée sur le modèle des sorties:
     
@@ -83,9 +68,13 @@ def nouvelle_sortie(request):
     elif request.method == 'POST':
         form = SortieForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('itineraires:itineraire')
-    return render(request,'itineraires/nouvelle_sortie.html', {'form': form})
+            sortie = form.save(commit=False)
+            sortie.user = request.user
+            sortie.itineraire = get_object_or_404(Itineraire, pk=itineraire_id)
+            sortie.save()
+            return redirect('itineraires:sortie', sortie.id)
+    itineraire = get_object_or_404(Itineraire, pk=itineraire_id)
+    return render(request,'itineraires/nouvelle_sortie.html', {'form': form, 'itineraire': itineraire})
 
 @login_required()
 def modif_sortie(request, user_id):
@@ -102,10 +91,12 @@ def modif_sortie(request, user_id):
         - ou le detail de la sortie qui vient d'être modifié si c'est une requête POST avec des champs valides
     """
     sortie = Sortie.objects.get(pk=user_id)
-    if request.method == 'GET':
-        form = SortieModifForm(instance=sortie)
+    if not (request.user.is_superuser) and (sortie.user != request.user):
+        return HttpResponse("Vous ne pouvez modifier que les sorties dont vous n'êtes pas l'auteur.")
+    elif request.method == 'GET':
+        form = SortieForm(instance=sortie)
     elif request.method == 'POST':
-        form = SortieModifForm(request.POST, instance=sortie)
+        form = SortieForm(request.POST, instance=sortie)
         if form.is_valid():
             form.save()
             return redirect('itineraires:sortie', user_id=user_id)

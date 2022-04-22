@@ -8,18 +8,21 @@
     <li class="navbar-item">
         <a class="nav-link mx-1" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
     </li>
+    <li class="navbar-item">
+        <a class="nav-link mx-1" href="{%url 'itineraires:sorties' itineraire.id%}">Sortie à {{itineraire.title}}</a>
+    </li>
 </li>
 {% endblock back%}
 
 {%block content%}
     <div class="container py-5">
-        <h1>Créer une sortie</h1>
-        <form action="{% url 'itineraires:nouvelle_sortie' %}" method="post" class="form">
+        <h1>Creation d'une sortie à {{itineraire.title}}</h1>
+        <form action="{% url 'itineraires:nouvelle_sortie' itineraire.id%}" method="post" class="form">
             {% csrf_token %}
             {% bootstrap_form form %}
                 {% buttons %}
-                <button type="submit" class="btn btn-outline-success">Enregister</button>
-                <a href="{%url 'itineraires:itineraire'%}" class="btn btn-outline-danger">Annuler</a>
+                <button type="submit" class="btn btn-outline-success">Créer la sortie</button>
+                <a href="{%url 'itineraires:sorties' itineraire.id%}" class="btn btn-outline-danger">Annuler</a>
                 {% endbuttons %}
         </form>
     </div>

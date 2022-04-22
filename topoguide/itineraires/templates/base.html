@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <li>
-                    <span class="navbar-text text-dark align-middle"><h2>TOPOGUIDE</h2></span>
+                    <span class="navbar-text text-dark"><h2>TOPOGUIDE</h2></span>
                 </li>
                 {%if user.is_authenticated %}
                 <li class="navbar-text mx-3 text-dark">Session de {{user.username}}</li>
@@ -25,9 +25,9 @@
                 {%block back%}{%endblock back%}
             </ul>
             {%if user.is_authenticated %}
-            <a class="btn btn-outline-danger align-middle" href="{%url 'itineraires:logout'%}">Se déconnecter</a>
+            <a class="btn btn-outline-danger" href="{%url 'itineraires:logout'%}">Se déconnecter</a>
             {%else%}
-            <a class="btn btn-outline-success align-middle" href="{%url 'accounts:login'%}">Se Connecter</a>
+            <a class="btn btn-outline-success" href="{%url 'accounts:login'%}">Se Connecter</a>
             {%endif%}
         </div>
     </nav>
