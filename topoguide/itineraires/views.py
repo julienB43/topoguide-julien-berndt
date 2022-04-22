@@ -47,5 +47,5 @@ def modif_sortie(request, user_id):
         form = SortieModifForm(request.POST, instance=sortie)
         if form.is_valid():
             form.save()
-            return redirect('itineraires:sorties', itineraire_id=sortie.itineraire.id)
+            return redirect('itineraires:sortie', user_id=user_id)
     return render(request, 'itineraires/modif_sortie.html', {'form': form, 'sortie': sortie})
