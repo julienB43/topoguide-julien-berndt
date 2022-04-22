@@ -1,0 +1,54 @@
+{% load bootstrap5 %}
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    <title>Page d'authentification de Topoguide</title>
+
+    <style>
+        body{
+            text-align: center;
+            position: relative;
+        }
+        footer {
+            position: absolute;
+            }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar pb-2 navbar-expand-sm bg-light navbar-light fixed-top">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li>
+                    <span class="navbar-text text-dark align-middle"><h2>TOPOGUIDE</h2></span>
+                </li>
+                <li class="navbar-item mx-1">
+                    <a class="nav-link" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class='container my-5 p-5'>
+        <h1>Page d'authentification</h1>
+        <div class='row'>
+            <div class='col-sm-4'></div>
+            <div class='col-sm-4'>
+                <form method="post" action="{% url 'accounts:login' %}" class='form'>
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-outline-success">Login</button>
+                    {% endbuttons %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 bg-dark text-white fixed-bottom">
+        <em>&copy; ISAE-SUPAERO 2022/Julien Berndt</em>
+    </div>
+</body>

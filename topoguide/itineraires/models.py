@@ -14,7 +14,7 @@ class Itineraire(models.Model):
     deniv_pos_cumul = models.IntegerField('Dénivelé positif cumulé (m)')
     deniv_neg_cumul = models.IntegerField('Dénivelé négatif cumulé (m)')
     duration = models.IntegerField('Durée (h)')
-    difficulty = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
+    difficulty = models.IntegerField('Difficulté (1-5)', default=1, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     
     def __str__(self):
         """
@@ -62,9 +62,9 @@ class Sortie(models.Model):
     date_sortie = models.DateTimeField('Date de la sortie')
     real_duration = models.IntegerField('Durée réelle (h)')
     nb_people = models.IntegerField('Nombre de participants')
-    exp_grp = models.CharField('Type de randonneur', choices=[('tous_débutants', 'Tous débutants'), ('tous_expérimentés','Tous expérimentés'), ('mixte', 'Mixte')], max_length=20)
-    weather = models.CharField('Météo', choices=[('bonne', 'Bonne'), ('moyenne', 'Moyenne'), ('mauvaise', 'Mauvaise')], max_length=10)
-    difficulty_felt = models.IntegerField('Difficulté (1-5)', choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
+    exp_grp = models.CharField('Type de randonneur', default='Tous débutants', choices=[('tous_débutants', 'Tous débutants'), ('tous_expérimentés','Tous expérimentés'), ('mixte', 'Mixte')], max_length=20)
+    weather = models.CharField('Météo', default='Bonne', choices=[('bonne', 'Bonne'), ('moyenne', 'Moyenne'), ('mauvaise', 'Mauvaise')], max_length=10)
+    difficulty_felt = models.IntegerField('Difficulté (1-5)', default=1, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
     
     def __str__(self):
         """
