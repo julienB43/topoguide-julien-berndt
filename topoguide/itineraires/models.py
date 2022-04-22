@@ -16,6 +16,15 @@ class Itineraire(models.Model):
     def __str__(self):
         return self.title
     
+    def hour_as_min(self):
+        hour = self.duration//1
+        mins = (self.duration%1)*60
+        if mins == 0:
+            return f'%d heures' % (hour)
+        if hour == 0:
+            return f'%d minutes' % (mins)
+        return f'%dh %dmin' % (hour,mins)
+    
 class Sortie(models.Model):
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -30,3 +39,12 @@ class Sortie(models.Model):
     
     def __str__(self):
         return 'Sortie à ' + self.itineraire.title + ' de ' + self.user.username
+    
+    def hour_as_min(self):
+        hour = self.real_duration//1
+        mins = (self.real_duration%1)*60
+        if mins == 0:
+            return f'%d heures' % (hour)
+        if hour == 0:
+            return f'%d minutes' % (mins)
+        return f'%dh %dmin' % (hour,mins)

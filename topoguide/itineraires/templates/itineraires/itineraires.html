@@ -23,7 +23,7 @@
             {% for itineraire in itineraires %}
                 <tr>
                     <td>{{ itineraire.title }}</td>
-                    <td>{{ itineraire.duration }}h</td>
+                    <td>{{ itineraire.hour_as_min }}</td>
                     <td>{{ itineraire.difficulty }} / 5</td>
                     <td><a href="{% url 'itineraires:sorties' itineraire.id %}" class="btn btn-outline-primary">Détail</a></td>
                 </tr>
