@@ -6,10 +6,10 @@
 {%block back%}
 <li class="text">
     <li class="navbar-item">
-        <a class="nav-link align-middle" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
+        <a class="nav-link mx-1" href="{%url 'itineraires:itineraire'%}">Itineraires</a>
     </li>
     <li class="navbar-item">
-        <a class="nav-link align-middle" href="{%url 'itineraires:sorties' sortie.itineraire_id%}">Sortie à {{sortie.itineraire.title}}</a>
+        <a class="nav-link mx-1" href="{%url 'itineraires:sorties' sortie.itineraire_id%}">Sortie à {{sortie.itineraire.title}}</a>
     </li>
 </li>
 {% endblock back%}
