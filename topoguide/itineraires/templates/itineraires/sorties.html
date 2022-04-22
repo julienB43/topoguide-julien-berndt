@@ -70,7 +70,7 @@
                     <td>{{sortie.user}}</td>
                     <td>{{sortie.date_sortie}}</td>
                     <td><a href="{%url 'itineraires:sortie' sortie.id%}" class="btn btn-outline-primary">Consulter</a>
-                        {%if user.id == sortie.user.id%}
+                        {%if user.id == sortie.user.id or user.is_superuser%}
                         <a href="{%url 'itineraires:modif_sortie' sortie.id%}" class="btn btn-outline-success">Modifier</a>
                         {%else%}
                         <a href="#" class="btn text-white disabled">Modifier</a>
